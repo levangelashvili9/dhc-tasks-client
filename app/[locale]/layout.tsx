@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
+import { poppins } from "@/app/fonts";
 
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
@@ -27,7 +28,7 @@ export default async function LayoutWrapper({
 
   return (
     <html lang={locale}>
-      <body className={`antialiased`}>
+      <body className={poppins.className}>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

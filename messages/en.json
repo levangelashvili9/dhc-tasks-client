@@ -1,5 +1,19 @@
 {
-  "home": {
-    "welcome": "Welcome"
+  "layout": {
+    "header": {
+      "user-name": "James Ronald"
+    }
+  },
+
+  "tasks": {
+    "search": {
+      "placeholder": "Search for notes"
+    },
+    "header": {
+      "clear-all": "Clear all Tasks"
+    },
+    "card": {
+      "mark-completed": "Mark completed"
+    }
   }
 }
