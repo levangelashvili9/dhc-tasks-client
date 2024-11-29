@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Plus, X } from "lucide-react";
+import { PencilLine, X } from "lucide-react";
 
 import {
   Dialog,
@@ -13,17 +13,21 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { CreateTaskForm } from "@/features/tasks/components";
+import { EditTaskForm } from "@/features/tasks/components";
 
-export const CreateTask = () => {
-  const t = useTranslations("tasks.create");
+type EditTaskProps = {
+  task: Task;
+};
+
+export const EditTask: React.FC<EditTaskProps> = ({ task }) => {
+  const t = useTranslations("tasks.edit");
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger>
-        <CreateTaskTrigger />
+      <DialogTrigger asChild>
+        <PencilLine className="size-4 cursor-pointer text-quaternary" />
       </DialogTrigger>
 
       <DialogContent className="max-w-xs" aria-describedby={undefined}>
@@ -36,16 +40,8 @@ export const CreateTask = () => {
           </div>
         </DialogHeader>
 
-        <CreateTaskForm closeDialog={() => setIsOpen(false)} />
+        <EditTaskForm task={task} closeDialog={() => setIsOpen(false)} />
       </DialogContent>
     </Dialog>
-  );
-};
-
-const CreateTaskTrigger = () => {
-  return (
-    <div className="fixed bottom-3 left-1/2 flex size-12 -translate-x-1/2 cursor-pointer items-center justify-center rounded-full bg-primary hover:bg-blue-500">
-      <Plus strokeWidth={3} className="size-4 text-white" />
-    </div>
   );
 };

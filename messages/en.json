@@ -27,6 +27,18 @@
         }
       },
       "button": "Save"
+    },
+    "edit": {
+      "heading": "Edit task name",
+      "inputs": {
+        "title": {
+          "placeholder": "Task name"
+        },
+        "description": {
+          "placeholder": "Type task details here..."
+        }
+      },
+      "button": "Save"
     }
   },
 

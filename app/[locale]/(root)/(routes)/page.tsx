@@ -1,16 +1,9 @@
-import {
-  CreateTask,
-  TasksHeader,
-  TasksList,
-  TasksSearch,
-} from "@/features/tasks/components";
+import { CreateTask, ActiveTasksList } from "@/features/tasks/components";
 
 export default function HomePage() {
   return (
     <>
-      <TasksSearch />
-      <TasksHeader />
-      <TasksList />
+      <ActiveTasksList />
       <CreateTask />
     </>
   );

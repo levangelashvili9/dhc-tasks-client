@@ -2,15 +2,12 @@
 
 import { memo, useState } from "react";
 import { useTranslations } from "next-intl";
-import {
-  ChevronDown,
-  ChevronUp,
-  CircleCheck,
-  PencilLine,
-  Trash2,
-} from "lucide-react";
+import { ChevronDown, ChevronUp, CircleCheck, Trash2 } from "lucide-react";
 
 import { useCompleteTask, useDeleteTask } from "@/features/tasks/api";
+
+import { EditTask } from "@/features/tasks/components";
+import { cn } from "@/lib/utils";
 
 type TaskCardProps = {
   task: Task;
@@ -31,7 +28,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         toggleIsExpanded={toggleIsExpanded}
       />
       {isExpanded && <TaskDescription description={task.description} />}
-      <TaskControlls task={task} />
+      {(isExpanded || !task.isCompleted) && <TaskControlls task={task} />}
     </div>
   );
 };
@@ -50,10 +47,17 @@ const TaskTitle: React.FC<TaskTitleProps> = ({
 }) => (
   <div
     onClick={toggleIsExpanded}
-    className="mb-7 flex cursor-pointer items-center justify-between"
+    className={cn("mb-7 flex cursor-pointer items-center justify-between", {
+      "mb-0": task.isCompleted && !isExpanded,
+    })}
   >
-    <h3 className="text-sm font-medium text-primary-foreground">
+    <h3 className="flex items-center gap-1 text-sm font-medium text-primary-foreground">
       {task.title}
+      <CircleCheck
+        className={cn("hidden size-4 text-success", {
+          flex: task.isCompleted && !isExpanded,
+        })}
+      />
     </h3>
     {isExpanded ? (
       <ChevronUp strokeWidth={2.25} className="size-[18px] text-quaternary" />
@@ -69,7 +73,7 @@ type TaskDescriptionProps = {
 };
 
 const TaskDescription: React.FC<TaskDescriptionProps> = ({ description }) => (
-  <div className="mb-6 border-2 border-dashed bg-background p-3">
+  <div className={"mb-6 border-2 border-dashed bg-background p-3"}>
     <p className="text-[10px] font-semibold text-tertiary-foreground">
       {description}
     </p>
@@ -90,7 +94,8 @@ const TaskControlls: React.FC<TaskControllsProps> = memo(({ task }) => {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <PencilLine className="size-4 cursor-pointer text-quaternary" />
+        {!task.isCompleted && <EditTask task={task} />}
+
         <Trash2
           onClick={() => deleteTask(task.id)}
           className="size-4 cursor-pointer text-destructive"

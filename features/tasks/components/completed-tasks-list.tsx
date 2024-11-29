@@ -1,16 +1,20 @@
 "use client";
 
+import { useQueryState } from "nuqs";
+
+import { TaskStatus, useTasks } from "@/features/tasks/api";
+
 import { TaskCard } from "@/features/tasks/components";
-import axiosInstance from "@/lib/api-client";
-import { useTasks } from "@/features/tasks/api";
 
-export const getTasks = async (): Promise<Task[]> => {
-  const response = await axiosInstance.get("/task");
-  return response.data.data;
-};
+export const CompletedTasksList = () => {
+  const [searchParams] = useQueryState("search", {
+    defaultValue: "",
+  });
 
-export const TasksList = () => {
-  const { data: tasks, status } = useTasks();
+  const { data: tasks, status } = useTasks({
+    search: searchParams,
+    status: TaskStatus.Completed,
+  });
 
   if (status === "pending") return <p>Loading tasks...</p>;
   if (status === "error") return <p>Error loading tasks</p>;
