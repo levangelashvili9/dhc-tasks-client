@@ -39,10 +39,20 @@
         }
       },
       "button": "Save"
+    },
+    "toasts": {
+      "create": "Task has been created",
+      "edit": "Task was edited successfully",
+      "delete": "Task has been deleted",
+      "mark-completed": "Great job!",
+      "clear-all": "All set! The task list is now empty"
     }
   },
 
   "shared": {
+    "toasts": {
+      "error": "Something went wrong..."
+    },
     "error-messages": {
       "required": "Field is required"
     }

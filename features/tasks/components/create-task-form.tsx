@@ -44,7 +44,9 @@ export const CreateTaskForm: React.FC<CreateTaskFormProps> = ({
 
   const onSubmit = async (values: CreateTaskSchema) => {
     await createTask(values, {
-      onSuccess: () => closeDialog(),
+      onSuccess: () => {
+        closeDialog();
+      },
     });
   };
 

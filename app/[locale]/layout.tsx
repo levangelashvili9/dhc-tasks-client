@@ -11,6 +11,7 @@ import { QueryProvider } from "@/components/shared/query-provider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -36,7 +37,10 @@ export default async function LayoutWrapper({
       <body className={poppins.className}>
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
-            <NuqsAdapter>{children}</NuqsAdapter>
+            <NuqsAdapter>
+              {children}
+              <Toaster expand={true} duration={2000} />
+            </NuqsAdapter>
           </NextIntlClientProvider>
 
           {process.env.NEXT_PUBLIC_ENV === "development" && (

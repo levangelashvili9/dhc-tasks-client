@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import axiosInstance from "@/lib/api-client";
-
 import { TASKS_QUERY_KEY } from "@/features/tasks/api";
 
 export const useCreateTaskSchema = () => {
@@ -25,12 +25,14 @@ export const createTask = async (taskData: CreateTaskSchema): Promise<Task> => {
 };
 
 export const useCreateTask = () => {
+  const t = useTranslations("tasks.toasts");
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: createTask,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [TASKS_QUERY_KEY] });
+      toast.success(t("create"));
     },
   });
 };

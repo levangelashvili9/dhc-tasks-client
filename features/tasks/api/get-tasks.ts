@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
 import axiosInstance from "@/lib/api-client";
-
 export const TASKS_QUERY_KEY = "tasks";
 
 export enum TaskStatus {

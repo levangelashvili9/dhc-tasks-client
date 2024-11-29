@@ -6,9 +6,8 @@ import { useQueryState } from "nuqs";
 import { Calendar, History } from "lucide-react";
 
 import { paths } from "@/config/paths";
-
-import { useClearAll } from "@/features/tasks/api";
 import { cn } from "@/lib/utils";
+import { useClearAll } from "@/features/tasks/api";
 
 export const Navigation = () => {
   const t = useTranslations("tasks.header");
@@ -48,7 +47,7 @@ export const Navigation = () => {
       <div className="flex items-end">
         <h3
           onClick={() => clearAll()}
-          className="text-xs font-medium text-primary-foreground underline underline-offset-[1.2px]"
+          className="cursor-pointer text-xs font-medium text-primary-foreground underline underline-offset-[1.2px]"
         >
           {t("clear-all")}
         </h3>
