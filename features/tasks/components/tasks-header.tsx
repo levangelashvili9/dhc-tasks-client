@@ -1,8 +1,14 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import { Calendar, History } from "lucide-react";
 
+import { useClearAll } from "@/features/tasks/api";
+
 export const TasksHeader = () => {
   const t = useTranslations("tasks.header");
+
+  const { mutate: clearAll } = useClearAll();
 
   return (
     <div className="mb-4 flex justify-between">
@@ -17,7 +23,10 @@ export const TasksHeader = () => {
       </div>
 
       <div className="flex items-end">
-        <h3 className="text-xs font-medium text-primary-foreground underline underline-offset-[1.2px]">
+        <h3
+          onClick={() => clearAll()}
+          className="text-xs font-medium text-primary-foreground underline underline-offset-[1.2px]"
+        >
           {t("clear-all")}
         </h3>
       </div>
