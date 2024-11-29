@@ -1,24 +1,42 @@
-import { Plus } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { Plus, X } from "lucide-react";
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 
+import { CreateTaskForm } from "@/features/tasks/components";
+
 export const CreateTask = () => {
+  const t = useTranslations("tasks.create");
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger>
         <CreateTaskTrigger />
       </DialogTrigger>
 
-      <DialogContent aria-describedby={undefined}>
+      <DialogContent className="max-w-xs" aria-describedby={undefined}>
         <DialogHeader>
-          <DialogTitle>Edit task name</DialogTitle>
+          <div>
+            <DialogTitle>{t("heading")}</DialogTitle>
+            <DialogClose className="absolute right-3 top-3">
+              <X className="size-4" />
+            </DialogClose>
+          </div>
         </DialogHeader>
+
+        <CreateTaskForm closeDialog={() => setIsOpen(false)} />
       </DialogContent>
     </Dialog>
   );

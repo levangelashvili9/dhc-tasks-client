@@ -3,3 +3,4 @@ export { TasksHeader } from "./tasks-header";
 export { TasksList } from "./tasks-list";
 export { TaskCard } from "./task-card";
 export { CreateTask } from "./create-task";
+export { CreateTaskForm } from "./create-task-form";

@@ -15,6 +15,24 @@
     "card": {
       "completed": "Completed",
       "mark-completed": "Mark completed"
+    },
+    "create": {
+      "heading": "Create task",
+      "inputs": {
+        "title": {
+          "placeholder": "Task name"
+        },
+        "description": {
+          "placeholder": "Type task details here..."
+        }
+      },
+      "button": "Save"
+    }
+  },
+
+  "shared": {
+    "error-messages": {
+      "required": "Field is required"
     }
   }
 }
