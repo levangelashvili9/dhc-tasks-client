@@ -10,12 +10,12 @@ import { useState } from "react";
 export const Search = () => {
   const t = useTranslations("tasks.search");
 
-  const [search, setSearch] = useState<string>("");
-
-  const [, setSearchParams] = useQueryState("search", {
+  const [searchParams, setSearchParams] = useQueryState("search", {
     defaultValue: "",
     clearOnDefault: true,
   });
+
+  const [search, setSearch] = useState<string>(searchParams);
 
   const handleSearch = () => {
     setSearchParams(search);
