@@ -2,6 +2,7 @@
 
 import { useQueryState } from "nuqs";
 
+import { cn } from "@/lib/utils";
 import { TaskStatus, useTasks } from "@/features/tasks/api";
 
 import { Spinner } from "@/components/ui/spinner";
@@ -25,7 +26,12 @@ export const ActiveTasksList = () => {
   if (status === "error") return <p>Error loading tasks</p>;
 
   return (
-    <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+    <div
+      className={cn(
+        "grid grid-cols-1 items-start gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4",
+        { "border-t border-primary/30": !tasks.length },
+      )}
+    >
       {tasks.map((task) => (
         <TaskCard key={task.id} task={task} />
       ))}
