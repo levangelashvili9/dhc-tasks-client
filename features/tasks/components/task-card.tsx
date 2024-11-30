@@ -8,6 +8,7 @@ import { useCompleteTask, useDeleteTask } from "@/features/tasks/api";
 
 import { EditTask } from "@/features/tasks/components";
 import { cn } from "@/lib/utils";
+import { ConfirmDialog } from "@/components/shared";
 
 type TaskCardProps = {
   task: Task;
@@ -96,10 +97,9 @@ const TaskControlls: React.FC<TaskControllsProps> = memo(({ task }) => {
       <div className="flex items-center gap-3">
         {!task.isCompleted && <EditTask task={task} />}
 
-        <Trash2
-          onClick={() => deleteTask(task.id)}
-          className="size-4 cursor-pointer text-destructive"
-        />
+        <ConfirmDialog callback={() => deleteTask(task.id)}>
+          <Trash2 className="size-4 cursor-pointer text-destructive" />
+        </ConfirmDialog>
       </div>
 
       {task.isCompleted ? (

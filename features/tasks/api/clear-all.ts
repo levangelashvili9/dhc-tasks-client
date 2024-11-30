@@ -11,14 +11,17 @@ export const clearAll = async () => {
 };
 
 export const useClearAll = () => {
-  const t = useTranslations("tasks.toasts");
+  const t = useTranslations();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: clearAll,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [TASKS_QUERY_KEY] });
-      toast.success(t("clear-all"));
+      toast.success(t("tasks.toasts.clear-all"));
+    },
+    onError: () => {
+      toast.error(t("shared.toasts.error"));
     },
   });
 };

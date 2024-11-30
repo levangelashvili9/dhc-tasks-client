@@ -25,14 +25,17 @@ export const createTask = async (taskData: CreateTaskSchema): Promise<Task> => {
 };
 
 export const useCreateTask = () => {
-  const t = useTranslations("tasks.toasts");
+  const t = useTranslations();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: createTask,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [TASKS_QUERY_KEY] });
-      toast.success(t("create"));
+      toast.success(t("tasks.toasts.create"));
+    },
+    onError: () => {
+      toast.error(t("shared.toasts.error"));
     },
   });
 };

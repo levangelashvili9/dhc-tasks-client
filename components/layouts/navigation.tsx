@@ -5,9 +5,11 @@ import { Link, usePathname } from "@/i18n/routing";
 import { useQueryState } from "nuqs";
 import { Calendar, History } from "lucide-react";
 
-import { paths } from "@/config/paths";
 import { cn } from "@/lib/utils";
+import { paths } from "@/config/paths";
 import { useClearAll } from "@/features/tasks/api";
+
+import { ConfirmDialog } from "@/components/shared";
 
 export const Navigation = () => {
   const t = useTranslations("tasks.header");
@@ -44,14 +46,13 @@ export const Navigation = () => {
         </Link>
       </div>
 
-      <div className="flex items-end">
-        <h3
-          onClick={() => clearAll()}
-          className="cursor-pointer text-xs font-medium text-primary-foreground underline underline-offset-[1.2px]"
-        >
-          {t("clear-all")}
-        </h3>
-      </div>
+      <ConfirmDialog callback={() => clearAll()}>
+        <div className="flex items-end">
+          <h3 className="cursor-pointer text-xs font-medium text-primary-foreground underline underline-offset-[1.2px]">
+            {t("clear-all")}
+          </h3>
+        </div>
+      </ConfirmDialog>
     </div>
   );
 };

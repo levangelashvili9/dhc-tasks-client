@@ -11,14 +11,17 @@ export const deleteTask = async (taskId: number) => {
 };
 
 export const useDeleteTask = () => {
-  const t = useTranslations("tasks.toasts");
+  const t = useTranslations();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: deleteTask,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [TASKS_QUERY_KEY] });
-      toast.success(t("delete"));
+      toast.success(t("tasks.toasts.delete"));
+    },
+    onError: () => {
+      toast.error(t("shared.toasts.error"));
     },
   });
 };

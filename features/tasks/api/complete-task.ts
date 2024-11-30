@@ -11,14 +11,17 @@ export const completeTask = async (taskId: number): Promise<Task> => {
 };
 
 export const useCompleteTask = () => {
-  const t = useTranslations("tasks.toasts");
+  const t = useTranslations();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: completeTask,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [TASKS_QUERY_KEY] });
-      toast.success(t("mark-completed"));
+      toast.success(t("tasks.toasts.mark-completed"));
+    },
+    onError: () => {
+      toast.error(t("shared.toasts.error"));
     },
   });
 };

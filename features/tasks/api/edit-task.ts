@@ -31,14 +31,17 @@ export const editTask = async ({
 };
 
 export const useEditTask = () => {
-  const t = useTranslations("tasks.toasts");
+  const t = useTranslations();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: editTask,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [TASKS_QUERY_KEY] });
-      toast.success(t("edit"));
+      toast.success(t("tasks.toasts.edit"));
+    },
+    onError: () => {
+      toast.error(t("shared.toasts.error"));
     },
   });
 };
