@@ -6,13 +6,10 @@ type SpinnerProps = {
 
 export const Spinner: React.FC<SpinnerProps> = ({ className }) => {
   return (
-    <div role="status">
+    <div role="status" className={className}>
       <svg
         aria-hidden="true"
-        className={cn(
-          "h-8 w-8 animate-spin fill-primary text-gray-200",
-          className,
-        )}
+        className="h-10 w-10 animate-spin fill-primary text-gray-200"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

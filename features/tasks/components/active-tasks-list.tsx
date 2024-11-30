@@ -4,8 +4,8 @@ import { useQueryState } from "nuqs";
 
 import { TaskStatus, useTasks } from "@/features/tasks/api";
 
-import { TaskCard } from "@/features/tasks/components";
 import { Spinner } from "@/components/ui/spinner";
+import { TaskCard } from "@/features/tasks/components";
 
 export const ActiveTasksList = () => {
   const [searchParams] = useQueryState("search", {
@@ -18,7 +18,9 @@ export const ActiveTasksList = () => {
   });
 
   if (status === "pending")
-    return <Spinner className="absolute left-1/2 top-1/2" />;
+    return (
+      <Spinner className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+    );
 
   if (status === "error") return <p>Error loading tasks</p>;
 

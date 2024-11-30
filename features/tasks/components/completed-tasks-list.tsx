@@ -4,6 +4,7 @@ import { useQueryState } from "nuqs";
 
 import { TaskStatus, useTasks } from "@/features/tasks/api";
 
+import { Spinner } from "@/components/ui/spinner";
 import { TaskCard } from "@/features/tasks/components";
 
 export const CompletedTasksList = () => {
@@ -16,7 +17,11 @@ export const CompletedTasksList = () => {
     status: TaskStatus.Completed,
   });
 
-  if (status === "pending") return <p>Loading tasks...</p>;
+  if (status === "pending")
+    return (
+      <Spinner className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+    );
+
   if (status === "error") return <p>Error loading tasks</p>;
 
   return (
