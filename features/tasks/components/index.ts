@@ -6,3 +6,4 @@ export { CreateTask } from "./create-task";
 export { CreateTaskForm } from "./create-task-form";
 export { EditTask } from "./edit-task";
 export { EditTaskForm } from "./edit-task-form";
+export { ClearTasks } from "./clear-tasks";

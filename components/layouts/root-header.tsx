@@ -5,6 +5,7 @@ import { Settings } from "lucide-react";
 import images from "@/config/images";
 
 import { Search, Navigation } from "@/components/layouts";
+import { ClearTasks } from "@/features/tasks/components";
 
 export const RootHeader = () => {
   const t = useTranslations("layout.header");
@@ -36,7 +37,10 @@ export const RootHeader = () => {
         <Search />
       </div>
 
-      <Navigation />
+      <div className="mb-4 flex justify-between">
+        <Navigation />
+        <ClearTasks />
+      </div>
     </div>
   );
 };

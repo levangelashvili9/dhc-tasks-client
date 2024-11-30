@@ -3,10 +3,23 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 import axiosInstance from "@/lib/api-client";
-import { TASKS_QUERY_KEY } from "@/features/tasks/api";
+import { TASKS_QUERY_KEY, TaskStatus } from "@/features/tasks/api";
 
-export const clearAll = async () => {
-  const response = await axiosInstance.delete("/task");
+interface ClearAllDto {
+  status?: TaskStatus;
+}
+
+export const clearAll = async (filters: ClearAllDto) => {
+  const params: Record<string, string | number | boolean | undefined> = {};
+
+  if (filters.status) {
+    params.status = filters.status;
+  }
+
+  const response = await axiosInstance.delete("/task", {
+    params,
+  });
+
   return response.data;
 };
 

@@ -9,9 +9,6 @@
     "search": {
       "placeholder": "Search for notes"
     },
-    "header": {
-      "clear-all": "Clear all Tasks"
-    },
     "card": {
       "completed": "Completed",
       "mark-completed": "Mark completed"
@@ -39,6 +36,10 @@
         }
       },
       "button": "Save"
+    },
+    "clear": {
+      "pending": "Clear all Tasks",
+      "history": "Clear history"
     },
     "toasts": {
       "create": "Task has been created",
