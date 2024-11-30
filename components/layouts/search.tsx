@@ -39,9 +39,12 @@ export const Search = () => {
 
       <div
         onClick={handleSearch}
-        className="absolute right-2 top-1/2 flex size-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-md bg-primary hover:bg-blue-500"
+        className="absolute right-2 top-1/2 flex size-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-md bg-primary hover:bg-blue-500 md:size-8"
       >
-        <SearchIcon className="size-3.5 text-white" strokeWidth={2.25} />
+        <SearchIcon
+          className="size-3.5 text-white md:size-4"
+          strokeWidth={2.25}
+        />
       </div>
     </div>
   );

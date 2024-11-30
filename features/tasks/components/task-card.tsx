@@ -52,18 +52,24 @@ const TaskTitle: React.FC<TaskTitleProps> = ({
       "mb-0": task.isCompleted && !isExpanded,
     })}
   >
-    <h3 className="flex items-center gap-1 text-sm font-medium text-primary-foreground">
+    <h3 className="flex items-center gap-1 text-sm font-medium text-primary-foreground md:text-base lg:text-lg">
       {task.title}
       <CircleCheck
-        className={cn("hidden size-4 text-success", {
+        className={cn("hidden size-4 text-success md:size-5", {
           flex: task.isCompleted && !isExpanded,
         })}
       />
     </h3>
     {isExpanded ? (
-      <ChevronUp strokeWidth={2.25} className="size-[18px] text-quaternary" />
+      <ChevronUp
+        strokeWidth={2.25}
+        className="size-[18px] text-quaternary md:size-5"
+      />
     ) : (
-      <ChevronDown strokeWidth={2.25} className="size-[18px] text-quaternary" />
+      <ChevronDown
+        strokeWidth={2.25}
+        className="size-[18px] text-quaternary md:size-5"
+      />
     )}
   </div>
 );
@@ -75,7 +81,7 @@ type TaskDescriptionProps = {
 
 const TaskDescription: React.FC<TaskDescriptionProps> = ({ description }) => (
   <div className={"mb-6 border-2 border-dashed bg-background p-3"}>
-    <p className="text-[10px] font-semibold text-tertiary-foreground">
+    <p className="text-[10px] font-semibold text-tertiary-foreground md:text-sm">
       {description}
     </p>
   </div>
@@ -98,7 +104,7 @@ const TaskControlls: React.FC<TaskControllsProps> = memo(({ task }) => {
         {!task.isCompleted && <EditTask task={task} />}
 
         <ConfirmDialog callback={() => deleteTask(task.id)}>
-          <Trash2 className="size-4 cursor-pointer text-destructive" />
+          <Trash2 className="size-4 cursor-pointer text-destructive md:size-5" />
         </ConfirmDialog>
       </div>
 
@@ -107,17 +113,17 @@ const TaskControlls: React.FC<TaskControllsProps> = memo(({ task }) => {
           <h4 className="text-[11px] font-medium text-tertiary-foreground">
             {t("completed")}
           </h4>
-          <CircleCheck className="size-4 text-success" />
+          <CircleCheck className="size-4 text-success md:size-5" />
         </div>
       ) : (
         <div
           onClick={() => completeTask(task.id)}
           className="flex cursor-pointer items-center gap-1"
         >
-          <h4 className="text-[11px] font-medium text-tertiary-foreground">
+          <h4 className="text-[11px] font-medium text-tertiary-foreground hover:text-primary-foreground md:text-sm">
             {t("mark-completed")}
           </h4>
-          <CircleCheck className="size-4 text-success" />
+          <CircleCheck className="size-4 text-success md:size-5" />
         </div>
       )}
     </div>

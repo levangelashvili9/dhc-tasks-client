@@ -19,10 +19,10 @@ export const RootHeader = () => {
             alt="avatar"
             width={50}
             height={50}
-            className="rounded-full"
+            className="rounded-full md:size-16"
           />
 
-          <h2 className="font-bold text-secondary-foreground">
+          <h2 className="font-bold text-secondary-foreground md:text-lg">
             {t("user-name")}
           </h2>
         </div>

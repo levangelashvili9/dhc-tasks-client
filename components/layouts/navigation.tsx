@@ -19,7 +19,7 @@ export const Navigation = () => {
       <Link
         href={`${paths.home.getHref()}${searchParams && `?search=${searchParams}`}`}
         className={cn(
-          "flex size-9 cursor-pointer items-center justify-center rounded-md bg-tertiary hover:bg-primary",
+          "flex size-9 cursor-pointer items-center justify-center rounded-md bg-tertiary hover:bg-primary md:size-10",
           { "bg-primary": paths.home.getHref() === pathname },
         )}
       >
@@ -29,7 +29,7 @@ export const Navigation = () => {
       <Link
         href={`${paths.history.getHref()}${searchParams && `?search=${searchParams}`}`}
         className={cn(
-          "flex size-9 cursor-pointer items-center justify-center rounded-md bg-tertiary hover:bg-primary",
+          "flex size-9 cursor-pointer items-center justify-center rounded-md bg-tertiary hover:bg-primary md:size-10",
           { "bg-primary": paths.history.getHref() === pathname },
         )}
       >

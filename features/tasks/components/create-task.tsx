@@ -26,12 +26,15 @@ export const CreateTask = () => {
         <CreateTaskTrigger />
       </DialogTrigger>
 
-      <DialogContent className="max-w-xs" aria-describedby={undefined}>
+      <DialogContent
+        className="max-w-xs md:max-w-md"
+        aria-describedby={undefined}
+      >
         <DialogHeader>
           <div>
             <DialogTitle>{t("heading")}</DialogTitle>
             <DialogClose className="absolute right-3 top-3">
-              <X className="size-4" />
+              <X className="size-4 md:size-5" />
             </DialogClose>
           </div>
         </DialogHeader>
@@ -44,8 +47,8 @@ export const CreateTask = () => {
 
 const CreateTaskTrigger = () => {
   return (
-    <div className="fixed bottom-3 left-1/2 flex size-12 -translate-x-1/2 cursor-pointer items-center justify-center rounded-full bg-primary hover:bg-blue-500">
-      <Plus strokeWidth={3} className="size-4 text-white" />
+    <div className="fixed bottom-3 left-1/2 flex size-12 -translate-x-1/2 cursor-pointer items-center justify-center rounded-full bg-primary hover:bg-blue-500 md:size-14">
+      <Plus strokeWidth={3} className="size-4 text-white md:size-5" />
     </div>
   );
 };

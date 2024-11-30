@@ -25,7 +25,7 @@ export const ClearTasks = () => {
   return (
     <ConfirmDialog callback={callback}>
       <div className="flex items-end">
-        <h3 className="cursor-pointer text-xs font-medium text-primary-foreground underline underline-offset-[1.2px]">
+        <h3 className="cursor-pointer text-xs font-medium text-primary-foreground underline underline-offset-[1.2px] hover:text-tertiary-foreground md:text-sm lg:text-base">
           {text}
         </h3>
       </div>
