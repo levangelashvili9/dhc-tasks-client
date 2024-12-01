@@ -1,5 +1,3 @@
-import { useTranslations } from "next-intl";
-
 import {
   Dialog,
   DialogClose,
@@ -21,8 +19,6 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   children,
   callback,
 }) => {
-  const t = useTranslations();
-
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useQueryState } from "nuqs";
 
 import { cn } from "@/lib/utils";
@@ -9,13 +10,15 @@ import { Spinner } from "@/components/ui/spinner";
 import { TaskCard } from "@/features/tasks/components";
 
 export const CompletedTasksList = () => {
+  const t = useTranslations("tasks");
+
   const [searchParams] = useQueryState("search", {
     defaultValue: "",
   });
 
   const { data: tasks, status } = useTasks({
     search: searchParams,
-    status: TaskStatus.Completed,
+    status: TaskStatus.COMPLETED,
   });
 
   if (status === "pending")
@@ -23,7 +26,7 @@ export const CompletedTasksList = () => {
       <Spinner className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
     );
 
-  if (status === "error") return <p>Error loading tasks</p>;
+  if (status === "error") return <p>{t("error")}</p>;
 
   return (
     <div

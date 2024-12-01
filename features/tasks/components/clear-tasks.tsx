@@ -17,8 +17,8 @@ export const ClearTasks = () => {
   const text = isHistoryPage ? t("history") : t("pending");
 
   const callback = isHistoryPage
-    ? () => clearAll({ status: TaskStatus.Completed })
-    : () => clearAll({ status: TaskStatus.Pending });
+    ? () => clearAll({ status: TaskStatus.COMPLETED })
+    : () => clearAll({ status: TaskStatus.PENDING });
 
   const { mutate: clearAll } = useClearAll();
 

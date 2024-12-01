@@ -4,8 +4,8 @@ import axiosInstance from "@/lib/api-client";
 export const TASKS_QUERY_KEY = "tasks";
 
 export enum TaskStatus {
-  Completed = "completed",
-  Pending = "pending",
+  COMPLETED = "completed",
+  PENDING = "pending",
 }
 
 interface GetTasksDto {
