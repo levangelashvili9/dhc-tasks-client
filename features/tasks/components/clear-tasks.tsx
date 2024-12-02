@@ -4,7 +4,8 @@ import { usePathname } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 
 import { paths } from "@/config/paths";
-import { TaskStatus, useClearAll } from "@/features/tasks/api";
+import { useClearAll } from "@/features/tasks/api";
+import { TaskStatus } from "@/features/tasks/enums";
 
 import { ConfirmDialog } from "@/components/shared";
 

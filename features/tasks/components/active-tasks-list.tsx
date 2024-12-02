@@ -4,7 +4,8 @@ import { useTranslations } from "next-intl";
 import { useQueryState } from "nuqs";
 
 import { cn } from "@/lib/utils";
-import { TaskStatus, useTasks } from "@/features/tasks/api";
+import { useTasks } from "@/features/tasks/api";
+import { TaskStatus } from "@/features/tasks/enums";
 
 import { Spinner } from "@/components/ui/spinner";
 import { TaskCard } from "@/features/tasks/components";

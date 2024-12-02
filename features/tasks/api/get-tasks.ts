@@ -1,12 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
 import axiosInstance from "@/lib/api-client";
+import { TaskStatus } from "@/features/tasks/enums";
 export const TASKS_QUERY_KEY = "tasks";
-
-export enum TaskStatus {
-  COMPLETED = "completed",
-  PENDING = "pending",
-}
 
 interface GetTasksDto {
   status?: TaskStatus;

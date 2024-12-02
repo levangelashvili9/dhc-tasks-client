@@ -3,7 +3,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 import axiosInstance from "@/lib/api-client";
-import { TASKS_QUERY_KEY, TaskStatus } from "@/features/tasks/api";
+import { TASKS_QUERY_KEY } from "@/features/tasks/api";
+import { TaskStatus } from "@/features/tasks/enums";
 
 interface ClearAllDto {
   status?: TaskStatus;
